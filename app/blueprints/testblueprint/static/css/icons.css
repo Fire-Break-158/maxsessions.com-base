@@ -1,0 +1,68 @@
+.icon-holder-custom1 {
+    width: 16px;                    /* Set the width of the icon */
+    height: 16px;                   /* Set the height of the icon */
+    display: inline-block;          /* Ensures the background image is displayed */
+    background-repeat: no-repeat;   /* Prevents the icon from repeating */
+    background-size: cover;         /* Ensures the background covers the element */
+    background-position: center;    /* Centers the background image within the element */
+    border-radius: 0 !important;    /* Ensures there are no rounded corners */
+    padding: 0;                     /* No padding to affect the dimensions */
+    margin: 0;                      /* No margin to affect placement */
+}
+
+/*  A   */
+.icon-ai {
+    background-image: url("/static/images/icons/icon-ai.svg");
+    height: 35px;
+    width: 35px;
+}
+
+/*  B   */
+
+/*  C   */
+
+/*  D   */
+
+/*  E   */
+
+/*  F   */
+
+/*  G   */
+
+/*  H   */
+
+/*  I   */
+
+/*  J   */
+
+/*  K   */
+
+/*  L   */
+
+/*  M   */
+
+/*  N   */
+
+/*  O   */
+
+/*  P   */
+
+/*  Q   */
+
+/*  R   */
+
+/*  S   */
+
+/*  T   */
+
+/*  U   */
+
+/*  V   */
+
+/*  W   */
+
+/*  X   */
+
+/*  Y   */
+
+/*  Z   */

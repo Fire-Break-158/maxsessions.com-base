@@ -1,0 +1,119 @@
+.icon-holder-custom1 {
+    width: 16px;                    /* Set the width of the icon */
+    height: 16px;                   /* Set the height of the icon */
+    display: inline-block;          /* Ensures the background image is displayed */
+    background-repeat: no-repeat;   /* Prevents the icon from repeating */
+    background-size: cover;         /* Ensures the background covers the element */
+    background-position: center;    /* Centers the background image within the element */
+    border-radius: 0 !important;    /* Ensures there are no rounded corners */
+    padding: 0;                     /* No padding to affect the dimensions */
+    margin: 0;                      /* No margin to affect placement */
+}
+
+/*  A   */
+
+/*  B   */
+
+/*  C   */
+.icon-cronjobs {
+    background-image: url("/static/images/icons/icon-cronjobs.svg");
+    height: 35px;
+    width: 35px;
+}
+
+/*  D   */
+.icon-database {
+    background-image: url("/static/images/icons/icon-database.svg");
+    height: 45px;
+    width: 45px;
+}
+
+.icon-docker {
+    background-image: url("/static/images/icons/icon-docker.svg");
+    height: 45px;
+    width: 45px;
+}
+
+.icon-docker-gear {
+    background-image: url("/static/images/icons/icon-docker-gear.svg");
+    height: 45px;
+    width: 45px;
+}
+
+.icon-docker-plus {
+    background-image: url("/static/images/icons/icon-docker-plus.svg");
+    height: 45px;
+    width: 45px;
+}
+
+/*  E   */
+
+/*  F   */
+
+/*  G   */
+.icon-gitlab {
+    background-image: url("/static/images/icons/icon-gitlab.svg");
+    height: 40px;
+    width: 40px;
+}
+
+/*  H   */
+.icon-home {
+    background-image: url("/static/images/icons/icon-home.svg");
+    height: 35px;
+    width: 35px;
+}
+
+/*  I   */
+
+/*  J   */
+
+/*  K   */
+.icon-keycloak {
+    background-image: url("/static/images/icons/icon-keycloak.svg");
+    height: 40px;
+    width: 40px;
+}
+
+/*  L   */
+
+/*  M   */
+
+/*  N   */
+.icon-nginx {
+    background-image: url("/static/images/icons/icon-nginx.svg");
+    height: 40px;
+    width: 40px;
+}
+
+/*  O   */
+
+/*  P   */
+.icon-postgres {
+    background-image: url("/static/images/icons/icon-postgres.svg");
+    height: 37px;
+    width: 37px;
+}
+
+/*  Q   */
+
+/*  R   */
+
+/*  S   */
+.icon-settings {
+    background-image: url("/static/images/icons/icon-settings.svg");
+}
+
+/*  T   */
+
+/*  U   */
+
+/*  V   */
+
+/*  W   */
+
+/*  X   */
+
+/*  Y   */
+
+/*  Z   */

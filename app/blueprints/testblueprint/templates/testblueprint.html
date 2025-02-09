@@ -1,0 +1,74 @@
+{% extends 'main_menu.html' %}
+
+{% set required_permissions = required_permissions|default(['Inheritor'], true) %}
+
+{% block content %}
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #e9f8fc; /* Adjust the greenbar color as desired */
+    }
+
+    table tr:nth-child(even) {
+        background-color: #e9f8fc; /* Adjust the greenbar color as desired */
+    }
+
+    table th,
+    table td {
+        padding: 3px;
+        text-align: left;
+    }
+
+    div#hcenter {
+        margin-left:auto;
+        margin-right:auto;
+        width:300px;
+        text-align:center;
+    }
+</style>
+
+
+
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Cronjob Manager</li>
+    </ol>
+</nav>
+
+<div id="content">
+    <table style="font-size: 20px;">
+        <thead>
+            <tr>
+                <th>
+                    Cronjob Commands
+                </th>
+            </tr>
+        </thead>    
+            <tbody>
+                {% for item in cronjobs %}
+                    <tr>
+                        <td style="font-size: 13px;">
+                            {{ item }}
+                        </td>
+                        <td> 
+                            <form method="POST" action=""> 
+                            <input type="hidden" name="cronjob" value="{{ item }}">
+                            <button id="submit" type="submit" name="submit" value='Cronjob Selected' class="btn btn-primary btn-save orange_background" style="width: 125px; height: 50px; font-size: 20px; font-weight: bold;">Delete</button>
+                            </form>
+                        </td>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody> 
+    </table>
+
+</div>
+
+{% endblock %}

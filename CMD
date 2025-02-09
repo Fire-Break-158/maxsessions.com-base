@@ -1,0 +1,10 @@
+docker run \
+	--name maxsessions.com \
+	--restart unless-stopped \
+	-d \
+	--env-file ./ENV \
+	-v $BASEDIR:/app/dockerfiles \
+	-v /var/run/docker.sock:/var/run/docker.sock \
+	-v /etc/crontab:/etc/crontab \
+	-p 8500:8500 \
+	maxsessionssite:latest

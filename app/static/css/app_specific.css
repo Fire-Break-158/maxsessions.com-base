@@ -1,0 +1,19 @@
+.backoffice_heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.backoffice_heading span {
+    flex: 1;
+    height: 2px; /* Thickness of the line */
+    background: #00287d; /* Color of the line */
+}
+
+.backoffice_heading h5 {
+    font-size: 1.25rem; /* Customize font size */
+    font-weight: 500; /* Customize font weight */
+    color: #00287d; /* Customize text color */
+    margin: 0 1rem; /* Add horizontal margin to space out the text from the lines */
+    text-align: center; /* Center the text */
+}

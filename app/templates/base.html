@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block meta %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/icons/favicon.svg') }}" type="image/png" sizes="18x18">
+    {% endblock %}
+
+    {% block fonts %}
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&display=swap"></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap">
+    {% endblock %}
+
+    {% block styles %}
+    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/app_specific.css') }}" rel="stylesheet">
+    {% endblock %}
+
+    <style>
+        {% block style %} 
+        {% endblock %}
+    </style>
+
+    <style>
+        #loading {
+            display: none;
+        }
+    </style>
+    
+    {% block title %} Max Sessions' Tools {% endblock %}
+
+    <script type="text/javascript">// <![CDATA[
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();       
+        }
+    // ]]></script>
+</head>
+<body>
+    {% macro render_field(field) %}
+    <dt>{{ field.label }}
+    <dd>{{ field(**kwargs)|safe }}
+        {% if field.errors %}
+            <ul class=errors>
+            {% for error in field.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </dd>
+    {% endmacro %}
+
+    {% set user_name = user_info['name'] if user_info is defined and user_info['name'] is defined else 'Not Logged In' %}
+    {% include 'elements/header.html' ignore missing %}
+
+    {% block menu %}
+    <!-- side menu -->
+    {% endblock %}
+
+    <main id="main" class="main">
+        <div class="conainer" class="fixed-header">
+            {% block page_title %}{% endblock %}
+        </div>
+        <div id="content">
+            {% set has_permission = has_permission | default(false) %}  {# Set to false if undefined #}
+            {% if not has_permission %}
+                {% if not required_permissions %}
+                    {% set has_permission = True %}
+                {% else %}
+                    {% set has_permission = check_permission(user_info.client_roles, required_permissions) %}
+                {% endif %}
+            {% endif %}
+                    
+            {% if has_permission %}
+                <!-- Content to be displayed if the user has permission -->
+                <div>
+                    <section >
+                        {% block content %}{% endblock %}
+                        <br>
+                    </section>
+                    {% if not hide_footer %}
+                        <br>
+                        <footer class="footer">
+                            <div class="container">
+                                <span class="text-muted">{% include 'elements/footer.html' ignore missing %}</span>
+                            </div>
+                        </footer> 
+                    {% endif %}
+                </div>
+            {% else %}
+                <!-- Error message if the user does not have the required permissions -->
+                <div class="container" style="max-width: 60%;">
+                    {% with name='Permissions Error' %}
+                        {% include 'elements/section_heading.html' %}
+                    {% endwith %}   
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="{{ url_for('static', filename='images/accessdenied.png') }}" width="20%">
+                        <h1>Access Denied</h1>
+                        <p>Reachout via email at <a href="mailto:maxsessionsjr@gmail.com">maxsessionsjr@gmail.com</a> or otherwise for access if needed</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+    {% block loading %}
+    <div id=loading>
+        {% with name='Please Wait' %}
+            {% include 'elements/section_heading.html' %}
+        {% endwith %}
+        {% block wait_message %}
+            <p style="text-align:center;">The System is processing your request. </p>
+            <p style="text-align:center;">Please be patient as we interact with the various systems necessary to complete your transaction.</p> 
+            <p style="text-align:center;">This may take severlal minutes -- please do leave this page until processing is complete.</p>
+        {% endblock %}
+        <br>
+        <br>
+        <p style="text-align:center;"><img src="{{ url_for('static', filename='images/loading.gif') }}" class="center"></p>
+        
+        
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <textarea id="logbox" class="form-control" rows="10"></textarea>
+                </div>
+            </div>
+        {% if showlog %}
+            <script>
+                setInterval(pollStatus, 1000);  // Poll job status every second
+                setInterval(pollLogs, 1000);     // Poll logs every second            
+            </script>   
+        {% endif %}
+
+        {% if not hide_footer %}
+            <footer class="footer">
+                <div class="container">
+                    <span class="text-muted">{% include 'footer.html' ignore missing %}</span>
+                </div>
+            </footer> 
+        {% endif %}
+    </div>
+    {% endblock %}
+
+</main>
+
+    {% block scripts %}
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.bundle.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/apexcharts/apexcharts.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/chart.js/chart.umd.js') }}" ></script>
+    <script src="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/echarts/echarts.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/quill/quill.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/simple-datatables/simple-datatables.js') }}" ></script>
+    <script src="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/tinymce/tinymce.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/php-email-form/validate.js') }}" ></script>
+     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% endblock %}
+</body>
+</html>

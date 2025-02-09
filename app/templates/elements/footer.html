@@ -1,0 +1,13 @@
+    <div class="copyright">
+      <div class="container">
+        <img src="{{ url_for('static', filename='images/ship.png') }}" width="20%">
+      </div>
+      <strong><span>Max Sessions <span id="year"></span></span></strong>. All Rights Reserved
+    </div>
+    <div class="container d-flex justify-content-center">
+      <a href="/privacy" style="margin-right: 20px;">Privacy Policy</a>
+      <a href="/tos" >Terms Of Service</a>
+    </div>
+  <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+  </script>

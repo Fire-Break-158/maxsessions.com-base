@@ -1,0 +1,50 @@
+<header id="header" class="header fixed-top d-flex align-items-center justify-content-between">
+
+  <!-- Left side: Logo and Sidebar Button -->
+  <div class="d-flex align-items-center">
+    <a href="/" class="logo d-flex align-items-center">
+      <span class="d-none d-lg-block">Max Sessions</span>
+    </a>
+    <i class="bi bi-list toggle-sidebar-btn ms-3"></i>
+  </div>
+
+  <!-- Right side: User Info and Logout -->
+  <nav class="d-flex align-items-center ms-auto">
+      <div class="pe-3">
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+          {% if user_info['name'] %}
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{ user_name }}</span>
+          {% else %}
+            <span class="d-none d-md-block dropdown-toggle ps-2">Not Logged In</span>
+          {% endif %}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          {% if user_info['name'] %}
+            <li>
+              {% if app_environment == 'Development' %}
+                <a>
+                  {{app_environment}}
+                </a>
+                <a>
+                  {{user_info['client_roles']}}
+                </a>
+              {% endif %}
+              <a class="dropdown-item d-flex align-items-center" href="{{ url_for('logout') }}">
+                <button class="btn btn-primary btn-save orange_background"><i class="bi bi-box-arrow-right"></i> Logout</button>
+              </a>
+            </li>
+          {% else %}
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/login">
+                <button class="btn btn-primary btn-save orange_background"><i class="bi bi-box-arrow-right"></i>Login</button>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+  </nav>
+  
+</header>
