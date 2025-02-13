@@ -1,0 +1,7 @@
+# Ignore everything
+*
+
+# Whitelist necessary files
+!blueprints.py
+!__init__.py
+!.gitignore

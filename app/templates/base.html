@@ -14,16 +14,19 @@
     {% endblock %}
 
     {% block styles %}
-    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/icons.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/app_specific.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='thirdparty/NiceAdmin-pro/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/icons.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/app_specific.css') }}" rel="stylesheet">
+        {% for stylesheet in icon_stylesheets %}
+            <link href="{{ stylesheet }}" rel="stylesheet">
+        {% endfor %}
     {% endblock %}
 
     <style>

@@ -4,7 +4,8 @@ from .configuration_utils import (
     configure_app, 
     load_secrets
 )
-from .blueprint import register_blueprint
+from .blueprints.blueprints import register_blueprint
+
 
 # Define OIDC globally 
 # (this needs to be done in __init__.py and the init_app method also needs to be called here)

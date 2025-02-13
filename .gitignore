@@ -1,0 +1,14 @@
+*.log
+__pycache__
+maxsessions-env/
+env/
+env-*/
+**/*-env/
+**/*-ENV/
+**/ENV-*/
+ENV
+.ENV
+.DEVENV
+DEVENV*
+PRODENV*
+*secret*

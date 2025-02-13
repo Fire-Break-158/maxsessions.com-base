@@ -13,7 +13,14 @@
               <span>Home</span>
             </a>
           </li>
-          
+          {% for item in menu_items %}
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="{{ item.url }}">
+                <i class="icon-holder-custom1 {{ item.icon_class }}"></i>
+                <span>{{ item.name }}</span>
+              </a>
+            </li>
+          {% endfor %}
             
 
 

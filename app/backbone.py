@@ -23,7 +23,10 @@ from app.functions import (
     get_oidc_user_info,
     check_permission
 )
-
+from app.blueprints.blueprints import (
+    get_blueprint_stylesheets,
+    get_blueprint_menu_items
+)
 
 # Local application/library-specific imports
 # Add the parent directory to sys.path
@@ -35,12 +38,14 @@ from app import create_app
 ##
 ## Setup and Housekeeping
 ##
+
+# Setup Flask App
 app = create_app()
 from app import oidc
 
-@app.template_filter('asint')
-def asint(value):
-    return int(value)
+# Get registered blueprint stylesheets
+icon_stylesheets = get_blueprint_stylesheets()
+menu_items = get_blueprint_menu_items()
 
 @app.context_processor
 def inject_globals():
@@ -55,14 +60,17 @@ def inject_globals():
     except:
         user_info = {}
         user_info['client_roles'] = []
+
     app_environment = current_app.config['APP_ENVIRONMENT']
-    base_url=current_app.config['LOGIN_URL']
+    base_url = current_app.config['LOGIN_URL']
 
     return {
         'user_info': user_info,
         'check_permission': check_permission,
         'app_environment': app_environment,
         'login_url': base_url,
+        'icon_stylesheets': icon_stylesheets,
+        'menu_items': menu_items
     }
 
 
